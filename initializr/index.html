@@ -1,0 +1,87 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Infor MiniCart demo</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+
+        <!--[if lt IE 9]>
+            <script src="js/vendor/html5-3.6-respond-1.4.2.min.js"></script>
+        <![endif]-->
+    </head>
+    <body ng-app="miniCartApp" ng-controller="MiniCartController as itemList">
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div class="header-container">
+            <header class="wrapper clearfix">
+                <nav class="global-nav">
+                    <ul>
+                        <li class="shopping-cart closed"><a href="#" id="myCart"><span class="img"></span>My Cart [{{ itemList.totalCount }}]</a></li>
+                        <li><a href="#"><img src="img/user.png">My Account</a></li>
+                        <li><a href="#">Currency ($)</a></li>
+                        <li><a href="#">Language (EN)</a></li>
+                    </ul>
+                </nav>
+                <nav class="page-nav">
+                	<ul>
+                		<li><a href="#">Products</a></li>
+                		<li><a href="#">Campaigns &amp; Promotions</a></li>
+                		<li><a href="#">About Us</a></li>
+                	</ul>
+                </nav>
+            </header>
+        </div>
+		
+		<div id="mini-cart" class="mini-cart hidden">
+			<div class="clearfix mc-item" ng-repeat="item in itemList.items">
+				<div class="left-col column">
+					<img src="img/{{item.image}}" alt="">
+				</div>
+				<div class="right-col">
+					<h3 class="line-clamp">{{item.name}}</h3>
+					<p class="item-number">{{item.number}}</p>
+					<p>
+						<span class="item-price">{{ item.price | currency }}</span>
+					</p>
+					<input class="item-count" ng-change="itemList.itemTotalCount()" min="0" placeholder="0" type="number" ng-model="item.count">
+					<div class="right total-price">{{ item.count * item.price | currency }}</div>
+				</div>
+			</div>
+			
+			<section class="clearfix totals">
+				<p>You have <span id="mc-item-count">{{ itemList.totalCount }}</span> items in your cart</p>
+				<p class="subtotal">Subtotal (USD) <span class="right" id="subtotal">{{ itemList.total | currency }}</span></p>
+				
+				<button class="view-cart">View Cart</button><button class="checkout">Checkout</button>
+			</section>
+		</div><!-- #mini-cart -->
+		
+        <div class="main-container">
+            <div class="main wrapper clearfix">
+
+
+            </div> <!-- #main -->
+        </div> <!-- #main-container -->
+
+        <div class="footer-container">
+            <footer class="wrapper">
+                <h3>footer</h3>
+            </footer>
+        </div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+        <script src="js/main.js"></script>
+        
+        <script src="http://livejs.com/live.js"></script>
+    </body>
+</html>
