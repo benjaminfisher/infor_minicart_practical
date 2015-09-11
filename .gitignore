@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 *.class
 *.pyc
 *.pyo
 =======
+=======
+>>>>>>> 7fef283bdc182de21109813fed25cbfdba7c26c6
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
